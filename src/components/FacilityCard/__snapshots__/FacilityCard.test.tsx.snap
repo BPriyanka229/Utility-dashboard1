@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FacilityCard matches snapshot 1`] = `
+"<ForwardRef(Card) sx={{...}}>
+  <ForwardRef(CardContent)>
+    <ForwardRef(Typography) variant="h5" gutterBottom={true}>
+      Green Heights
+    </ForwardRef(Typography)>
+    <ForwardRef(Grid) container={true} spacing={4}>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Actual Consumption
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6">
+          107
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Baseline Consumption
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6">
+          96
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Actual Cost
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6">
+          $
+          107
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Baseline Cost
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6">
+          $
+          96
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Cost Savings
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6" color="success.main">
+          $
+          11
+           (
+          20.7
+          %)
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid) size={{...}}>
+        <ForwardRef(Typography) variant="body2" color="text.secondary">
+          Total Consumption Savings
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography) variant="h6" color="success.main">
+          11
+           (
+          20.7
+          %)
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(CardContent)>
+</ForwardRef(Card)>"
+`;
