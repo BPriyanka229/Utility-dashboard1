@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react'
 import FacilityCard from './FacilityCard'
 import { TotalAggregations } from '../../types/utilityTypes'
 
