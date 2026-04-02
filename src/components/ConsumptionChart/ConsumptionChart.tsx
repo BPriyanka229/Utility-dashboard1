@@ -2,30 +2,49 @@ import { useEffect, useRef } from "react"
 import Highcharts from "highcharts"
 import { Card, CardContent, Typography, Box } from "@mui/material"
 
-interface Props {
-  months: string[]
-  actual: number[]
-  baseline: number[]
+interface ConsumptionData {
+  month: string
+  actual: number
+  baseline: number
 }
 
-const ConsumptionChart = ({ months, actual, baseline }: Props) => {
+interface Props {
+  data: ConsumptionData[]
+}
+
+const ConsumptionChart = ({ data }: Props) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!chartRef.current) return
 
+    const months = data.map((item) => item.month)
+    const actual = data.map((item) => item.actual)
+    const baseline = data.map((item) => item.baseline)
+
     Highcharts.chart(chartRef.current, {
       chart: {
         type: "line",
-        height: 420
+        height: 420,
+        scrollablePlotArea: {
+          minWidth: 800,
+          scrollPositionX: 0
+        }
       },
 
       title: {
-        text: "Monthly Consumption"
+        text: "Monthly Consumption",
+        style: {
+          fontSize: "18px",
+          fontWeight: "600"
+        }
       },
 
       xAxis: {
-        categories: months
+        categories: months,
+        title: {
+          text: undefined
+        }
       },
 
       yAxis: {
@@ -40,20 +59,37 @@ const ConsumptionChart = ({ months, actual, baseline }: Props) => {
         verticalAlign: "bottom"
       },
 
+      plotOptions: {
+        line: {
+          marker: {
+            enabled: true
+          }
+        }
+      },
+
       series: [
         {
           type: "line",
           name: "Actual",
-          data: actual
+          data: actual,
+          color: "#4CAF50"
         },
         {
           type: "line",
           name: "Baseline",
-          data: baseline
+          data: baseline,
+          color: "#6C63FF",
+          marker: {
+            symbol: "diamond"
+          }
         }
-      ]
+      ],
+
+      credits: {
+        enabled: true
+      }
     })
-  }, [months, actual, baseline])
+  }, [data])
 
   return (
     <Card sx={{ width: "100%", mt: 3 }}>

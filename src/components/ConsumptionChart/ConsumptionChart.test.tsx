@@ -1,26 +1,26 @@
-import React from 'react'
-import { mount } from 'enzyme'
-import ConsumptionChart from './ConsumptionChart'
+import React from "react"
+import { mount } from "enzyme"
+import ConsumptionChart from "./ConsumptionChart"
 import Highcharts from "highcharts"
 
 jest.mock("highcharts", () => ({
   chart: jest.fn()
 }))
 
-const months = ['Jan 2021', 'Feb 2021']
-const actual = [2000, 2000]
-const baseline = [3000, 3000]
+const data = [
+  { month: "Jan 2021", actual: 2000, baseline: 3000 },
+  { month: "Feb 2021", actual: 2000, baseline: 3000 }
+]
 
 const setUp = (props = {}) => {
-  const defaultproperties = {
-    months, actual, baseline
+  const defaultProperties = {
+    data
   }
-  return mount(<ConsumptionChart {...defaultproperties} {...props} />);
 
+  return mount(<ConsumptionChart {...defaultProperties} {...props} />)
 }
 
-describe('ConsumptionChart', () => {
-
+describe("ConsumptionChart", () => {
 
   it("matches snapshot", () => {
     const comp = setUp()
@@ -31,10 +31,10 @@ describe('ConsumptionChart', () => {
     setUp()
     expect(Highcharts.chart).toHaveBeenCalled()
   })
+
   it("passes correct props to component", () => {
     const comp = setUp()
-    expect(comp.props().months).toEqual(months)
-    expect(comp.props().actual).toEqual(actual)
-    expect(comp.props().baseline).toEqual(baseline)
+    expect(comp.props().data).toEqual(data)
   })
+
 })

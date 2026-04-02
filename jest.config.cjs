@@ -18,4 +18,5 @@ module.exports = {
     '<rootDir>/src/**/__tests__/**/*.(ts|tsx|js)',
     '<rootDir>/src/**/*.(test|spec).(ts|tsx|js)',
   ],
+  
 }

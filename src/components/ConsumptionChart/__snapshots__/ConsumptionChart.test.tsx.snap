@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConsumptionChart matches snapshot 1`] = `
-"<ConsumptionChart months={{...}} actual={{...}} baseline={{...}}>
+"<ConsumptionChart data={{...}}>
   <ForwardRef(Card) sx={{...}}>
     <MuiCardRoot className="MuiCard-root" elevation={[undefined]} ownerState={{...}} sx={{...}}>
       <Insertion cache={{...}} serialized={{...}} isStringTag={false} />

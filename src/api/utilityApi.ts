@@ -7,6 +7,5 @@ const API_URL =
 export const fetchUtilityApi = async (): Promise<ApiResponse> => {
   const response = await axios.get(API_URL)
 
-  // MockAPI returns array
   return response.data[0].data
 }

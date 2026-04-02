@@ -1,10 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import FacilityCard from './FacilityCard'
 import { TotalAggregations } from '../../types/utilityTypes'
+import ThemeProvider from '@mui/system/ThemeProvider'
+import darkTheme from '../../theme'
+import CssBaseline from '@mui/material/CssBaseline'
 
 const meta: Meta<typeof FacilityCard> = {
   title: 'Components/FacilityCard',
   component: FacilityCard,
+
+   decorators:[
+    (Story)=>(
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    )
+  ],
   parameters: {
     layout: 'centered',
   },

@@ -6,7 +6,9 @@ import MeterTable from "./components/MeterTable/MeterTable"
 import { Container, Typography, CircularProgress, Alert } from "@mui/material"
 import { fetchUtilityRequest } from "./redux/actions/utilityActions"
 import type { ApiResponse } from "./types/utilityTypes"
-
+import darkTheme from './theme'
+import { ThemeProvider } from "@mui/material/styles"
+import CssBaseline from "@mui/material/CssBaseline"
 interface Aggregation {
   monthStartDate: string
   actualConsumption: number
@@ -58,6 +60,8 @@ function App() {
   const baseline = facility.monthwiseAggregations.map((m: Aggregation) => m.baselineConsumption)
 
   return (
+       <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
     <Container maxWidth="lg" sx={{ padding: 4 }}>
       <Typography variant="h4" gutterBottom>
         Utility Dashboard - {data.data.organizationName}
@@ -75,13 +79,19 @@ function App() {
       />
       
       <ConsumptionChart
-        months={months}
-        actual={actual}
-        baseline={baseline}
-      />
+  data={[
+    { month: "Jan 2021", actual: 2000, baseline: 3000 },
+    { month: "Feb 2021", actual: 2000, baseline: 3000 },
+    { month: "Mar 2021", actual: 2000, baseline: 3000 },
+    { month: "Apr 2021", actual: 2000, baseline: 3000 },
+    { month: "May 2021", actual: 2000, baseline: 3000 },
+    { month: "Jun 2021", actual: 2000, baseline: 3000 }
+  ]}
+/>
 
       <MeterTable meters={facility.utilityMeters} />
     </Container>
+    </ThemeProvider>
   )
 }
 
