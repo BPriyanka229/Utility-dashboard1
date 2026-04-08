@@ -41,5 +41,13 @@ export const Default: Story = {
   args: {
     facilityName: 'Green Heights',
     totalAggregations: mockTotalAggregations,
+    data: [
+      { month: 'Jan 2021', actual: 2000, baseline: 3000 },
+      { month: 'Feb 2021', actual: 1950, baseline: 2900 },
+      { month: 'Mar 2021', actual: 2100, baseline: 3050 },
+      { month: 'Apr 2021', actual: 2050, baseline: 3000 },
+      { month: 'May 2021', actual: 1980, baseline: 2950 },
+      { month: 'Jun 2021', actual: 2150, baseline: 3100 }
+    ],
   },
 }

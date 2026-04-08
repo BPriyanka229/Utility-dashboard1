@@ -1,27 +1,25 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import FacilityCard from "./components/FacilityCard/FacilityCard"
-import ConsumptionChart from "./components/ConsumptionChart/ConsumptionChart"
 import MeterTable from "./components/MeterTable/MeterTable"
+
 import { Container, Typography, CircularProgress, Alert } from "@mui/material"
-import { fetchUtilityRequest } from "./redux/actions/utilityActions"
-import type { ApiResponse } from "./types/utilityTypes"
-import darkTheme from './theme'
 import { ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
-interface Aggregation {
-  monthStartDate: string
-  actualConsumption: number
-  baselineConsumption: number
-}
+
+import { fetchUtilityRequest } from "./redux/actions/utilityActions"
+import darkTheme from "./theme"
+
+import "./api/mockUtilityApi"
 
 interface RootState {
   loading: boolean
-  data: ApiResponse | null
+  data: any
   error: string | null
 }
 
 function App() {
+
   const dispatch = useDispatch()
   const { loading, data, error } = useSelector((state: RootState) => state)
 
@@ -31,7 +29,16 @@ function App() {
 
   if (loading) {
     return (
-      <Container maxWidth="lg" sx={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          padding: 4,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh"
+        }}
+      >
         <CircularProgress />
       </Container>
     )
@@ -45,52 +52,20 @@ function App() {
     )
   }
 
-  if (!data || !data.data) {
-    return <div>No data available</div>
-  }
-
-  const facility = data.data.regions[0].facilities[0]
-
-  const months = facility.monthwiseAggregations.map((m: Aggregation) => {
-    const date = new Date(m.monthStartDate)
-    return date.toLocaleString('default', { month: 'short', year: 'numeric' })
-  })
-
-  const actual = facility.monthwiseAggregations.map((m: Aggregation) => m.actualConsumption)
-  const baseline = facility.monthwiseAggregations.map((m: Aggregation) => m.baselineConsumption)
-
   return (
-       <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-    <Container maxWidth="lg" sx={{ padding: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Utility Dashboard - {data.data.organizationName}
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        {data.data.utilityType.toUpperCase()} | {data.data.utilityMeasurementUnit} | {data.data.utilityCostCurrency}
-      </Typography>
-      <Typography variant="body2" color="textSecondary" gutterBottom>
-        Period: {data.data.aggregationsStartDate} to {data.data.aggregationsEndDate}
-      </Typography>
 
-      <FacilityCard
-        facilityName={facility.facilityName}
-        totalAggregations={facility.totalAggregations}
-      />
-      
-      <ConsumptionChart
-  data={[
-    { month: "Jan 2021", actual: 2000, baseline: 3000 },
-    { month: "Feb 2021", actual: 2000, baseline: 3000 },
-    { month: "Mar 2021", actual: 2000, baseline: 3000 },
-    { month: "Apr 2021", actual: 2000, baseline: 3000 },
-    { month: "May 2021", actual: 2000, baseline: 3000 },
-    { month: "Jun 2021", actual: 2000, baseline: 3000 }
-  ]}
-/>
+      <Container maxWidth="lg" sx={{ padding: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Utility Dashboard
+        </Typography>
 
-      <MeterTable meters={facility.utilityMeters} />
-    </Container>
+        <FacilityCard />
+
+        <MeterTable />
+
+      </Container>
     </ThemeProvider>
   )
 }

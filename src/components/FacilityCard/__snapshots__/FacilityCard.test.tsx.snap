@@ -1,70 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FacilityCard matches snapshot 1`] = `
-"<ForwardRef(Card) sx={{...}}>
-  <ForwardRef(CardContent)>
-    <ForwardRef(Typography) variant="h5" gutterBottom={true}>
-      Green Heights
-    </ForwardRef(Typography)>
-    <ForwardRef(Grid) container={true} spacing={4}>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Actual Consumption
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6">
-          107
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Baseline Consumption
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6">
-          96
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Actual Cost
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6">
-          $
-          107
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Baseline Cost
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6">
-          $
-          96
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Cost Savings
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6" color="success.main">
-          $
-          11
-           (
-          20.7
-          %)
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid) size={{...}}>
-        <ForwardRef(Typography) variant="body2" color="text.secondary">
-          Total Consumption Savings
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography) variant="h6" color="success.main">
-          11
-           (
-          20.7
-          %)
-        </ForwardRef(Typography)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-  </ForwardRef(CardContent)>
-</ForwardRef(Card)>"
+exports[`FacilityCard API Test calls API and renders facility data 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1qxlvz8-MuiPaper-root-MuiCard-root"
+    style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+  >
+    <div
+      class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1f9xtph-MuiTypography-root"
+      >
+        Green Heights
+      </h5>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-4 css-kqg16c-MuiGrid-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Actual Consumption
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+          >
+            107
+          </h6>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Baseline Consumption
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+          >
+            96
+          </h6>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Actual Cost
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+          >
+            $
+            107
+          </h6>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Baseline Cost
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-1miy0lu-MuiTypography-root"
+          >
+            $
+            96
+          </h6>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Cost Savings
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-8hsqgf-MuiTypography-root"
+          >
+            $
+            11
+            (
+            20.7
+            %)
+          </h6>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3 css-17hq2y0-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-7ctihp-MuiTypography-root"
+          >
+            Total Consumption Savings
+          </p>
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-8hsqgf-MuiTypography-root"
+          >
+            11
+            (
+            20.7
+            %)
+          </h6>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root css-9avqgd"
+      >
+        <div
+          style="width: 100%; height: 100%;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;
