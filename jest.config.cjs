@@ -18,5 +18,26 @@ module.exports = {
     '<rootDir>/src/**/__tests__/**/*.(ts|tsx|js)',
     '<rootDir>/src/**/*.(test|spec).(ts|tsx|js)',
   ],
+
+    /* -------- CODE COVERAGE -------- */
+
+  collectCoverage: true,
+
+  collectCoverageFrom: [
+    "src/components/**/*.{ts,tsx}",
+  "!src/**/*.test.{ts,tsx}",
+  "!src/**/*.stories.{ts,tsx}",
+  "!src/main.tsx",
+  "!src/vite-env.d.ts",
+  "!src/store/**",
+  "!src/types/**",
+  "!src/utils/**"
+  ],
+
+  coverageThreshold: {
+    global: {
+      lines: 90
+    }
+  }
   
 }

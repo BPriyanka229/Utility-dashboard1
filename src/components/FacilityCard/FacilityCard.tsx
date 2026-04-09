@@ -57,7 +57,7 @@ const FacilityCard = () => {
 
     const chart = Highcharts.chart(chartRef.current, {
       chart: {
-        type: "line",
+        type: "column",
         height: 420
       },
 
@@ -66,7 +66,8 @@ const FacilityCard = () => {
       },
 
       xAxis: {
-        categories: months
+        categories: months,
+        crosshair: true
       },
 
       yAxis: {
@@ -75,20 +76,51 @@ const FacilityCard = () => {
         }
       },
 
-      series: [
-        {
-          type: "line",
-          name: "Actual",
-          data: actual,
-          color: "#4CAF50"
-        },
-        {
-          type: "line",
-          name: "Baseline",
-          data: baseline,
-          color: "#6C63FF"
+      tooltip: {
+        shared: true,
+        headerFormat: "<span style=\"font-size: 13px\">{point.key}</span><br/>"
+      },
+
+      plotOptions: {
+        column: {
+          borderRadius: 4,
+          pointPadding: 0.15,
+          groupPadding: 0.1
         }
-      ]
+      },
+
+      series: [
+  {
+    type: "column",
+    name: "Actual",
+    data: actual,
+    color: "#4CAF50"
+  },
+  {
+    type: "column",
+    name: "Baseline",
+    data: baseline,
+    color: "#6C63FF"
+  },
+  {
+    type: "spline",
+    name: "Actual Trend",
+    data: actual,
+    color: "#2E7D32",
+    marker: {
+      enabled: true
+    }
+  },
+  {
+    type: "spline",
+    name: "Baseline Trend",
+    data: baseline,
+    color: "#3F51B5",
+    marker: {
+      enabled: true
+    }
+  }
+]
     })
 
     return () => chart.destroy()
