@@ -1,13 +1,9 @@
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
-
 const mock = new MockAdapter(axios, { delayResponse: 1000 })
-
 const API_URL = "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
-
 const mockData = [
     {
-
         data: {
             organizationId: 'id12be10fd-c679-476b-aeb2-2c719f594250',
             organizationName: 'ATS',
@@ -133,7 +129,5 @@ const mockData = [
         }
     }
 ]
-
 mock.onGet(API_URL).reply(200, mockData)
-
 export default mock

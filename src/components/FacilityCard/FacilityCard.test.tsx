@@ -2,19 +2,14 @@ import { render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import axios from "axios"
 import FacilityCard from "./FacilityCard"
-
 jest.mock("highcharts", () => ({
   chart: jest.fn(() => ({
     destroy: jest.fn()
   }))
 }))
-
 jest.mock("axios")
-
 const mockedAxios = axios as jest.Mocked<typeof axios>
-
 describe("FacilityCard API Test", () => {
-
   const mockApiResponse = [
     {
       data: {
@@ -47,27 +42,30 @@ describe("FacilityCard API Test", () => {
       }
     }
   ]
-
+  
   test("calls API and renders facility data", async () => {
-
     mockedAxios.get.mockResolvedValue({
       data: mockApiResponse
     })
-
     const { container } = render(<FacilityCard />)
-
     await waitFor(() => {
       expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     })
-
     const label = await screen.findByText("Total Actual Consumption")
-
     expect(label).toBeInTheDocument()
-
     expect(
       await screen.findByText("107")
     ).toBeInTheDocument()
-
     expect(container).toMatchSnapshot()
   })
+
+  test("handles API error", async () => {
+  mockedAxios.get.mockRejectedValue(new Error("API failed"))
+  const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {})
+  render(<FacilityCard />)
+  await waitFor(() => {
+    expect(errorSpy).toHaveBeenCalledWith("API error:", expect.any(Error))
+  })
+  errorSpy.mockRestore()
+})
 })

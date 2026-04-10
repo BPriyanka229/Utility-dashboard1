@@ -2,13 +2,9 @@ import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import axios from "axios"
 import MeterTable from "./MeterTable"
-
 jest.mock("axios")
-
 const mockedAxios = axios as jest.Mocked<typeof axios>
-
 describe("MeterTable API Test", () => {
-
   const mockApiResponse = [
     {
       data: {
@@ -51,19 +47,13 @@ describe("MeterTable API Test", () => {
       }
     }
   ]
-
   test("fetches API data and renders meters", async () => {
-
     mockedAxios.get.mockResolvedValue({
       data: mockApiResponse
     })
-
     render(<MeterTable />)
-
     // Wait for UI update
     expect(await screen.findByText("Meter1")).toBeInTheDocument()
     expect(await screen.findByText("Meter2")).toBeInTheDocument()
-
   })
-
 })
