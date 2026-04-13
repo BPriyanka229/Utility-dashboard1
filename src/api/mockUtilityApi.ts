@@ -1,6 +1,7 @@
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
 const mock = new MockAdapter(axios, { delayResponse: 1000 })
+console.log("mockUtilityApi: axios mock adapter initialized")
 const API_URL = "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
 const mockData = [
     {
@@ -129,5 +130,8 @@ const mockData = [
         }
     }
 ]
-mock.onGet(API_URL).reply(200, mockData)
+mock.onGet(API_URL).reply(config => {
+  console.log("mockUtilityApi: intercepted axios GET", config.url)
+  return [200, mockData]
+})
 export default mock

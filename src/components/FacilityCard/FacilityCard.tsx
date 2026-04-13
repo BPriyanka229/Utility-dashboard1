@@ -17,6 +17,7 @@ const FacilityCard = () => {
         const response = await axios.get(
           "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
         )
+        console.log("FacilityCard: axios response", response.data)
         const facility =
           response.data[0].data.regions[0].facilities[0]
         setFacilityData(facility)

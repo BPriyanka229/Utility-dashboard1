@@ -20,6 +20,7 @@ const MeterTable = () => {
       const meterData =
         response.data[0].data.regions[0].facilities[0].utilityMeters
       setMeters(meterData)
+      console.log("Meter table: axios response", response.data)
     }
     fetchMeters()
   }, [])
