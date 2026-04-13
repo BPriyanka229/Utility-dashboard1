@@ -14,16 +14,36 @@ import axios from "axios"
 const API_URL = "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
 const MeterTable = () => {
   const [meters, setMeters] = useState<Meter[]>([])
+  const [loading, setLoading] = useState(true)
+const [error, setError] = useState(false)
   useEffect(() => {
     const fetchMeters = async () => {
+
+        try {
       const response = await axios.get(API_URL)
       const meterData =
         response.data[0].data.regions[0].facilities[0].utilityMeters
       setMeters(meterData)
+      
       console.log("Meter table: axios response", response.data)
+     } catch (err) {
+        console.error("API error:", err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
     }
     fetchMeters()
   }, [])
+
+  if (loading) {
+    return <Typography sx={{ padding: 2 }}>Loading...</Typography>
+  }
+
+  
+  if (error) {
+    return <Typography sx={{ padding: 2 }}>No Data</Typography>
+  }
   return (
     <TableContainer component={Paper} sx={{ marginTop: 3 }}>
       <Typography variant="h6" sx={{ padding: 2 }}>Utility Meters</Typography>

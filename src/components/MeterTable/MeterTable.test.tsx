@@ -56,4 +56,12 @@ describe("MeterTable API Test", () => {
     expect(await screen.findByText("Meter1")).toBeInTheDocument()
     expect(await screen.findByText("Meter2")).toBeInTheDocument()
   })
+
+  test("handles API error", async () => {
+  mockedAxios.get.mockRejectedValue(new Error("API failed"))
+  render(<MeterTable />)
+  expect(await screen.findByText(/no data/i)).toBeInTheDocument()
+})
+
+
 })
