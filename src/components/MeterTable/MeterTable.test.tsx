@@ -1,10 +1,16 @@
 import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import axios from "axios"
+import MockAdapter from "axios-mock-adapter"
 import MeterTable from "./MeterTable"
-jest.mock("axios")
-const mockedAxios = axios as jest.Mocked<typeof axios>
+
+const mock = new MockAdapter(axios)
+
 describe("MeterTable API Test", () => {
+
+  const API_URL =
+    "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
+
   const mockApiResponse = [
     {
       data: {
@@ -47,21 +53,30 @@ describe("MeterTable API Test", () => {
       }
     }
   ]
+
+  afterEach(() => {
+    mock.reset()
+  })
+
   test("fetches API data and renders meters", async () => {
-    mockedAxios.get.mockResolvedValue({
-      data: mockApiResponse
-    })
+
+    mock.onGet(API_URL).reply(200, mockApiResponse)
+
     render(<MeterTable />)
-    // Wait for UI update
+
     expect(await screen.findByText("Meter1")).toBeInTheDocument()
     expect(await screen.findByText("Meter2")).toBeInTheDocument()
+
   })
 
   test("handles API error", async () => {
-  mockedAxios.get.mockRejectedValue(new Error("API failed"))
-  render(<MeterTable />)
-  expect(await screen.findByText(/no data/i)).toBeInTheDocument()
-})
 
+    mock.onGet(API_URL).networkError()
+
+    render(<MeterTable />)
+
+    expect(await screen.findByText(/no data/i)).toBeInTheDocument()
+
+  })
 
 })

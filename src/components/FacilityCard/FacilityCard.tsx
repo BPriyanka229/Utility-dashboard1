@@ -70,37 +70,37 @@ const FacilityCard = () => {
         }
       },
       series: [
-  {
-    type: "column",
-    name: "Actual",
-    data: actual,
-    color: "#4CAF50"
-  },
-  {
-    type: "column",
-    name: "Baseline",
-    data: baseline,
-    color: "#6C63FF"
-  },
-  {
-    type: "spline",
-    name: "Actual Trend",
-    data: actual,
-    color: "#2E7D32",
-    marker: {
-      enabled: true
-    }
-  },
-  {
-    type: "spline",
-    name: "Baseline Trend",
-    data: baseline,
-    color: "#3F51B5",
-    marker: {
-      enabled: true
-    }
-  }
-]
+        {
+          type: "column",
+          name: "Actual",
+          data: actual,
+          color: "#4CAF50"
+        },
+        {
+          type: "column",
+          name: "Baseline",
+          data: baseline,
+          color: "#6C63FF"
+        },
+        {
+          type: "spline",
+          name: "Actual Trend",
+          data: actual,
+          color: "#2E7D32",
+          marker: {
+            enabled: true
+          }
+        },
+        {
+          type: "spline",
+          name: "Baseline Trend",
+          data: baseline,
+          color: "#3F51B5",
+          marker: {
+            enabled: true
+          }
+        }
+      ]
     })
     return () => chart.destroy()
   }, [chartData])

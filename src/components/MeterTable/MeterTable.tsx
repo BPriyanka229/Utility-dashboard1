@@ -11,6 +11,7 @@ import {
 import type { Meter } from "../../types/utilityTypes"
 import { useEffect, useState } from "react"
 import axios from "axios"
+
 const API_URL = "https://69c277b27518bf8facbe717b.mockapi.io/api/v1/utility"
 const MeterTable = () => {
   const [meters, setMeters] = useState<Meter[]>([])
